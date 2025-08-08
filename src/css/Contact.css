@@ -147,6 +147,17 @@
   padding-top: 10px;
 }
 
+/* Fade out animation for status messages */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+
 /* Responsive */
 @media (max-width: 900px) {
   .contact-grid {

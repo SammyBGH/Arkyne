@@ -1,37 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/Contact.css';
 
 export default function Contact() {
-  // Env variables for WhatsApp
   const phone = import.meta.env.VITE_WHATSAPP_NUMBER || '233508748443';
   const messageText = import.meta.env.VITE_WHATSAPP_MESSAGE || 'Hello Arkyn! I would like to talk about a project.';
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(messageText)}`;
 
-  // Backend base URL from env
   const backendBaseUrl = import.meta.env.VITE_BACKEND_URL || '';
   const contactApiUrl = backendBaseUrl ? `${backendBaseUrl}/api/contact` : '/api/contact';
 
-  // Form state
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null); // 'success' | 'error' | null
+  const [fadeOut, setFadeOut] = useState(false);
 
   const handleChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
     setStatus(null);
+    setFadeOut(false);
   };
 
-  // Submit contact form to backend
   const handleSubmit = async e => {
     e.preventDefault();
 
     if (!form.name.trim() || !form.message.trim()) {
       setStatus('error');
+      setFadeOut(false);
       return;
     }
 
     setLoading(true);
     setStatus(null);
+    setFadeOut(false);
 
     try {
       const res = await fetch(contactApiUrl, {
@@ -44,14 +44,26 @@ export default function Contact() {
 
       setStatus('success');
       setForm({ name: '', email: '', message: '' });
+
+      // Start fade out timer
+      setTimeout(() => setFadeOut(true), 3000);
+      // Clear status after fadeout completes
+      setTimeout(() => {
+        setStatus(null);
+        setFadeOut(false);
+      }, 3500);
     } catch (err) {
       setStatus('error');
+      setTimeout(() => setFadeOut(true), 3000);
+      setTimeout(() => {
+        setStatus(null);
+        setFadeOut(false);
+      }, 3500);
     } finally {
       setLoading(false);
     }
   };
 
-  // WhatsApp click: log then open link
   const handleWhatsAppClick = async () => {
     try {
       await fetch(contactApiUrl, {
@@ -126,8 +138,16 @@ export default function Contact() {
             </button>
           </form>
 
-          {status === 'success' && <p className="success-msg">Thanks! We’ll get back to you soon.</p>}
-          {status === 'error' && <p className="error-msg">Please fill in the required fields correctly.</p>}
+          {status === 'success' && (
+            <p className={`success-msg${fadeOut ? ' fade-out' : ''}`}>
+              Thanks! We’ll get back to you soon.
+            </p>
+          )}
+          {status === 'error' && (
+            <p className={`error-msg${fadeOut ? ' fade-out' : ''}`}>
+              Please fill in the required fields correctly.
+            </p>
+          )}
 
           <div className="contact-info" style={{ marginTop: 24 }}>
             <div><strong>Email:</strong> <span>arkyne.tech1@gmail.com</span></div>
