@@ -7,9 +7,9 @@ export default function Hero() {
     <section id="hero" className="hero-section">
       <div className="hero-grid">
         <div className="hero-left">
-          <h1>Arkyn — Refuge of Light</h1>
+          <h1>Arkyn | Refuge of Light</h1>
           <p>
-            We craft human-centred digital products — websites, apps, and brand experiences — built for clarity and trust.
+            We craft human-centred digital products, websites, apps, and brand experiences — built for clarity and trust.
             From idea to launch, we make tech feel personal.
           </p>
 
