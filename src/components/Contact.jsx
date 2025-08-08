@@ -7,6 +7,10 @@ export default function Contact() {
   const messageText = import.meta.env.VITE_WHATSAPP_MESSAGE || 'Hello Arkyn! I would like to talk about a project.';
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(messageText)}`;
 
+  // Backend base URL from env
+  const backendBaseUrl = import.meta.env.VITE_BACKEND_URL || '';
+  const contactApiUrl = backendBaseUrl ? `${backendBaseUrl}/api/contact` : '/api/contact';
+
   // Form state
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [loading, setLoading] = useState(false);
@@ -30,7 +34,7 @@ export default function Contact() {
     setStatus(null);
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(contactApiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, source: 'contact-form' }),
@@ -50,7 +54,7 @@ export default function Contact() {
   // WhatsApp click: log then open link
   const handleWhatsAppClick = async () => {
     try {
-      await fetch('/api/contact', {
+      await fetch(contactApiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
