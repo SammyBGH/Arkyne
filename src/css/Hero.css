@@ -37,23 +37,52 @@
   flex-wrap: wrap;
 }
 
+/* Base btn styles */
 .btn {
-  padding: 10px 16px;
-  border-radius: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
   text-decoration: none;
   font-weight: 700;
-  transition: background 0.25s ease, color 0.25s ease;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgba(60, 42, 77, 0.1);
+  user-select: none;
 }
 
+/* Explore Services - primary btn */
 .btn.primary {
   background: #3C2A4D;
   color: #E9C46A;
+  border: 2px solid #3C2A4D;
 }
 
+.btn.primary:hover,
+.btn.primary:focus {
+  background: #5a3e75;
+  color: #fff2b8;
+  box-shadow: 0 6px 12px rgba(92, 67, 117, 0.4);
+  outline: none;
+}
+
+/* Talk on WhatsApp - ghost btn */
 .btn.ghost {
   background: transparent;
   color: #3C2A4D;
-  border: 2px solid rgba(60,42,77,0.06);
+  border: 2px solid rgba(60,42,77,0.15);
+  box-shadow: none;
+}
+
+.btn.ghost:hover,
+.btn.ghost:focus {
+  background: rgba(244, 162, 97, 0.15);
+  border-color: #f4a261;
+  color: #f4a261;
+  box-shadow: 0 4px 10px rgba(244, 162, 97, 0.3);
+  outline: none;
 }
 
 .hero-features {
