@@ -3,7 +3,7 @@ import '../css/Contact.css';
 
 export default function Contact() {
   // Env variables for WhatsApp
-  const phone = import.meta.env.VITE_WHATSAPP_NUMBER || '233501234567';
+  const phone = import.meta.env.VITE_WHATSAPP_NUMBER || '233508748443';
   const messageText = import.meta.env.VITE_WHATSAPP_MESSAGE || 'Hello Arkyn! I would like to talk about a project.';
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(messageText)}`;
 
