@@ -29,19 +29,52 @@
   display: inline-block;
   background: linear-gradient(90deg, #25D366, #128C7E);
   color: white;
-  padding: 12px 18px;
+  padding: 12px 20px;
   border-radius: 10px;
   text-decoration: none;
   font-weight: 700;
   margin-bottom: 24px;
   cursor: pointer;
   border: none;
-  transition: background 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
   width: fit-content;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Hover lift + glow */
+.btn.whatsapp:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+  background: linear-gradient(90deg, #20b957, #0e6b5f);
+}
+
+/* Ripple effect */
+.btn.whatsapp::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+}
+
+.btn.whatsapp:active::after {
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+  transition: 0s;
+}
+
 .btn.whatsapp:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 /* Contact info section */
@@ -156,7 +189,6 @@
 .fade-out {
   animation: fadeOut 0.5s forwards;
 }
-
 
 /* Responsive */
 @media (max-width: 900px) {
