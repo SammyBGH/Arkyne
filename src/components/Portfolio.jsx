@@ -3,11 +3,15 @@ import '../css/Portfolio.css';
 import p1 from '../assets/images/portfolio-1.png';
 import p2 from '../assets/images/portfolio-2.png';
 import p3 from '../assets/images/portfolio-3.png';
+import p4 from '../assets/images/portfolio-4.png';
+import p5 from '../assets/images/portfolio-5.png';
 
 const items = [
   { id: 1, img: p1, title: 'Imagen — Image Classifier' },
   { id: 2, img: p2, title: 'StitchIt — E-commerce' },
-  { id: 3, img: p3, title: 'Resumio — AI Resume Builder' }
+  { id: 3, img: p3, title: 'Resumio — AI Resume Builder' },
+  { id: 4, img: p4, title: 'Dashboard for a Piezoelectric Power Generator' },
+  { id: 5, img: p5, title: 'Payment platform for my websites' }
 ];
 
 export default function Portfolio() {
