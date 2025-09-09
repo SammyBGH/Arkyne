@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../css/Portfolio.css';
 import p1 from '../assets/images/portfolio-1.png';
 import p2 from '../assets/images/portfolio-2.png';
@@ -16,28 +16,40 @@ const items = [
 
 export default function Portfolio() {
   const [showAll, setShowAll] = useState(false);
+  const containerRef = useRef(null);
+  const [height, setHeight] = useState('auto');
 
-  // Decide which items to display
-  const displayedItems = showAll ? items : items.slice(0, 3);
+  useEffect(() => {
+    if (containerRef.current) {
+      const grid = containerRef.current;
+      const itemsToShow = showAll ? items.length : 3;
+      const rowHeight = grid.scrollHeight / items.length; // approximate per item
+      setHeight(`${rowHeight * itemsToShow + 16 * Math.ceil(itemsToShow / 3)}px`);
+    }
+  }, [showAll]);
 
   return (
     <section id="portfolio" className="section portfolio">
       <h2>Selected Work</h2>
       <p className="sub">A small sample of projects we've shipped.</p>
 
-      <div className="portfolio-grid">
-        {displayedItems.map(it => (
-          <div className="port-item" key={it.id}>
-            <img src={it.img} alt={it.title} />
-            <div className="overlay">
-              <h4>{it.title}</h4>
-              <a href="#contact" className="link">Discuss this</a>
+      <div
+        className="portfolio-grid-wrapper"
+        style={{ maxHeight: height }}
+      >
+        <div className="portfolio-grid" ref={containerRef}>
+          {items.map(it => (
+            <div className="port-item" key={it.id}>
+              <img src={it.img} alt={it.title} />
+              <div className="overlay">
+                <h4>{it.title}</h4>
+                <a href="#contact" className="link">Discuss this</a>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
-      {/* Toggle button */}
       <div style={{ textAlign: 'center', marginTop: '20px' }}>
         <button
           className="more-btn"
