@@ -1,11 +1,21 @@
+/* Wrapper for smooth toggle animation */
 .portfolio-grid-wrapper {
   overflow: hidden;
   transition: max-height 0.5s ease;
 }
 
-.portfolio h2 { color: #3C2A4D; margin-bottom: 6px; }
-.portfolio .sub { color: #6b5a6a; margin-bottom: 18px; }
+/* Section Titles */
+.portfolio h2 {
+  color: #3C2A4D;
+  margin-bottom: 6px;
+}
 
+.portfolio .sub {
+  color: #6b5a6a;
+  margin-bottom: 18px;
+}
+
+/* Portfolio Grid */
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -13,6 +23,7 @@
   margin-top: 18px;
 }
 
+/* Portfolio Item */
 .port-item {
   position: relative;
   border-radius: 12px;
@@ -22,7 +33,9 @@
   transition: transform 0.3s ease;
 }
 
-.port-item:hover { transform: translateY(-4px); }
+.port-item:hover {
+  transform: translateY(-4px);
+}
 
 .port-item img {
   width: 100%;
@@ -32,8 +45,11 @@
   transition: transform 0.4s ease;
 }
 
-.port-item:hover img { transform: scale(1.05); }
+.port-item:hover img {
+  transform: scale(1.05);
+}
 
+/* Overlay */
 .port-item .overlay {
   position: absolute;
   inset: 0;
@@ -42,14 +58,18 @@
   justify-content: flex-end;
   padding: 16px;
   background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.45) 100%);
-  color: white;
+  color: #fff;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.port-item:hover .overlay { opacity: 1; }
+.port-item:hover .overlay {
+  opacity: 1;
+}
 
-.overlay h4 { margin-bottom: 8px; }
+.overlay h4 {
+  margin-bottom: 8px;
+}
 
 .overlay .link {
   background: rgba(233, 196, 106, 0.95);
@@ -61,8 +81,11 @@
   transition: background 0.25s ease;
 }
 
-.overlay .link:hover { background: rgba(233, 196, 106, 1); }
+.overlay .link:hover {
+  background: rgba(233, 196, 106, 1);
+}
 
+/* Toggle Button */
 .more-btn {
   background: #3C2A4D;
   color: #fff;
@@ -74,7 +97,19 @@
   transition: background 0.3s ease;
 }
 
-.more-btn:hover { background: #5a3e72; }
+.more-btn:hover {
+  background: #5a3e72;
+}
 
-@media (max-width: 1000px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .portfolio-grid { grid-template-columns: 1fr; } }
+/* Responsive Grid */
+@media (max-width: 1000px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -16,16 +16,42 @@ const items = [
 
 export default function Portfolio() {
   const [showAll, setShowAll] = useState(false);
+  const [maxHeight, setMaxHeight] = useState('auto');
   const containerRef = useRef(null);
-  const [height, setHeight] = useState('auto');
+
+  const calculateMaxHeight = () => {
+    if (!containerRef.current) return;
+    const grid = containerRef.current;
+    const children = Array.from(grid.children);
+    const gridStyle = getComputedStyle(grid);
+    const columns = gridStyle.gridTemplateColumns.split(' ').length;
+    const gap = parseInt(gridStyle.rowGap || '16');
+
+    if (showAll) {
+      // Show all items
+      setMaxHeight(`${grid.scrollHeight}px`);
+    } else {
+      // Show only first 3 items
+      const rowsToShow = Math.ceil(3 / columns);
+      const rowHeights = [];
+
+      for (let r = 0; r < rowsToShow; r++) {
+        const startIndex = r * columns;
+        const rowItems = children.slice(startIndex, startIndex + columns);
+        const rowHeight = Math.max(...rowItems.map(c => c.offsetHeight));
+        rowHeights.push(rowHeight);
+      }
+
+      const totalHeight = rowHeights.reduce((a, b) => a + b, 0) + (rowsToShow - 1) * gap;
+      setMaxHeight(`${totalHeight}px`);
+    }
+  };
 
   useEffect(() => {
-    if (containerRef.current) {
-      const grid = containerRef.current;
-      const itemsToShow = showAll ? items.length : 3;
-      const rowHeight = grid.scrollHeight / items.length; // approximate per item
-      setHeight(`${rowHeight * itemsToShow + 16 * Math.ceil(itemsToShow / 3)}px`);
-    }
+    calculateMaxHeight();
+
+    window.addEventListener('resize', calculateMaxHeight);
+    return () => window.removeEventListener('resize', calculateMaxHeight);
   }, [showAll]);
 
   return (
@@ -35,7 +61,7 @@ export default function Portfolio() {
 
       <div
         className="portfolio-grid-wrapper"
-        style={{ maxHeight: height }}
+        style={{ maxHeight }}
       >
         <div className="portfolio-grid" ref={containerRef}>
           {items.map(it => (
