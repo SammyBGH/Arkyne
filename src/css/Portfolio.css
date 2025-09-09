@@ -1,3 +1,4 @@
+/* Portfolio Section Titles */
 .portfolio h2 {
   color: #3C2A4D;
   margin-bottom: 6px;
@@ -8,6 +9,7 @@
   margin-bottom: 18px;
 }
 
+/* Portfolio Grid */
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -15,6 +17,7 @@
   margin-top: 18px;
 }
 
+/* Portfolio Item */
 .port-item {
   position: relative;
   border-radius: 12px;
@@ -40,6 +43,7 @@
   transform: scale(1.05);
 }
 
+/* Overlay */
 .port-item .overlay {
   position: absolute;
   inset: 0;
@@ -75,7 +79,23 @@
   background: rgba(233, 196, 106, 1);
 }
 
-/* responsive */
+/* Toggle Button */
+.more-btn {
+  background: #3C2A4D;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.more-btn:hover {
+  background: #5a3e72;
+}
+
+/* Responsive */
 @media (max-width: 1000px) {
   .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
