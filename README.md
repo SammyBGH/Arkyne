@@ -1,131 +1,97 @@
-# Arkyn Website (React + Vite)
+# Arkyn – Company Website
 
-Modern, animated, and responsive company site for Arkyn built with React + Vite. It features scroll‑triggered animations, portfolio case‑study modals, a testimonial carousel, advanced contact/newsletter forms, dark‑mode‑free light theme, internationalization (EN/FR), and SEO enhancements.
+Welcome! This is Arkyn’s polished, responsive website built with React + Vite. It’s fast, animated, and easy to edit. This guide helps you run it, tweak content, and deploy.
 
-## Tech Stack
-- React 19 + Vite 7
-- CSS modules (plain CSS files scoped by class names)
-- Custom animations in `src/css/animations.css`
-- Node/Express backend (optional, not required to run the frontend)
+---
 
-## Getting Started
+## Quick Start
+- **Install**
+  ```bash
+  npm install
+  ```
+- **Run locally**
+  ```bash
+  npm run dev
+  ```
+- **Build**
+  ```bash
+  npm run build
+  ```
+- **Preview build**
+  ```bash
+  npm run preview
+  ```
 
-1) Install dependencies
-```bash
-npm install
+---
+
+## What you get
+- **Beautiful sections**: Hero, About, Services, Portfolio, Testimonials, Process, CTA Band, FAQ, Contact, Footer
+- **Delightful motion**: Clean scroll reveals and micro‑interactions
+- **EN/FR language switch**: In the navbar, instant switch
+- **Forms that feel good**: Newsletter and Contact with friendly feedback
+- **SEO‑ready**: Meta tags, sitemap, robots, and JSON‑LD Organization
+
+---
+
+## Edit content fast
+- Hero, About, Services, Portfolio, etc. live in `src/components/`
+- Copy lives in `src/i18n/strings.js` (EN + FR). Change text once, it updates everywhere.
+- Colors, spacing, and typography are in `src/index.css` and section CSS files in `src/css/`
+
+---
+
+## Environment (copy‑paste this)
+Create `frontend/.env` with any of the below you need:
 ```
-
-2) Run the dev server
-```bash
-npm run dev
-```
-
-3) Build for production
-```bash
-npm run build
-```
-
-4) Preview the production build
-```bash
-npm run preview
-```
-
-## Environment Variables (Frontend)
-Create a `.env` in `frontend/` (same folder as this README), and define as needed:
-```
-VITE_BACKEND_URL=https://api.your-backend.com   # optional, defaults to dev proxy
-VITE_WHATSAPP_NUMBER=233508748443               # used by Contact + CTA band (no plus sign)
+VITE_BACKEND_URL=
+VITE_WHATSAPP_NUMBER=233508748443
 VITE_WHATSAPP_MESSAGE=Hello Arkyn! I would like to talk about a project.
 ```
+Notes:
+- Leave `VITE_BACKEND_URL` empty for local dev. Dev server proxies `/api` to `http://localhost:5001`.
+- `VITE_WHATSAPP_NUMBER` has no plus sign.
 
-If `VITE_BACKEND_URL` is not provided, Vite dev server proxies `/api` to `http://localhost:5001` (see `vite.config.js`).
+---
 
-## Scripts
-- `npm run dev` – start Vite dev server
-- `npm run build` – build production bundle into `dist/`
-- `npm run preview` – preview the production bundle locally
+## Deploy to Vercel
+This project already includes `vercel.json`.
 
-## Project Structure (Frontend)
-```
-src/
-  App.jsx                 # main page composition
-  main.jsx                # React root + providers (i18n)
-  index.css               # design tokens, typography, theming
-  css/
-    animations.css        # keyframes, hover effects, helpers (ambient backgrounds, fade-out)
-    Hero.css, About.css, Services.css, Portfolio.css, Testimonials.css, Contact.css, Footer.css, Navbar.css
-  components/
-    Navbar.jsx            # sticky nav, active link, EN/FR toggle
-    Hero.jsx              # headline, CTAs, animated image
-    About.jsx             # stats counter + bullets
-    Services.jsx          # image cards with overlays & hover effects
-    Portfolio.jsx         # grid + case study modal
-    Testimonials.jsx      # carousel with autoplay + dots + controls
-    Contact.jsx           # WhatsApp + form with validation and feedback
-    Footer.jsx            # social links + newsletter with success fade-out
-    ScrollReveal.jsx      # intersection-based reveal wrapper
-    FloatingParticles.jsx # subtle background particles
-    LoadingSpinner.jsx    # spinner + skeletons
-    Process.jsx           # multi-step timeline
-    CTABand.jsx           # dual CTA band
-    FAQ.jsx               # accordion
-  i18n/
-    I18nProvider.jsx      # i18n context (EN/FR)
-    strings.js            # all copy for EN/FR
-public/
-  robots.txt              # SEO crawling policy
-  sitemap.xml             # SEO sitemap (update hostname if needed)
-index.html                # JSON-LD schema, meta tags
-vercel.json               # build/output settings for Vercel
-```
+1) Push your repo to GitHub
+2) Import in Vercel (use `frontend/` as the project root)
+3) Add environment variables in Vercel (same as `.env`)
+4) Deploy 🎉
 
-## Key Features
-- **Animations & Micro‑interactions**: `src/css/animations.css` (fade, float, shimmer, ambient backgrounds, focus rings, etc.)
-- **Scroll Reveal**: `ScrollReveal.jsx` for per‑section animation on entry
-- **Testimonials Carousel**: clean translateX logic, autoplay, controls, dots
-- **Portfolio Modals**: case study details with tags and CTAs
-- **Forms UX**: contact + newsletter with success/error feedback and fade‑out
-- **Internationalization**: EN/FR switcher in Navbar, content in `i18n/strings.js`
-- **Responsive**: tablet/mobile breakpoints with improved grids & no horizontal overflow
-- **SEO**: meta tags in `index.html`, `robots.txt`, `sitemap.xml`, JSON‑LD Organization
+SEO files live in `public/`:
+- `robots.txt`
+- `sitemap.xml`
 
-## Internationalization (EN/FR)
-- Language switcher in `Navbar.jsx`. State persisted in `localStorage` (key `arkyn-lang`).
-- Add/edit copy in `src/i18n/strings.js`.
+---
 
-## Performance Notes
-- Hero image marked `loading="eager"` + `fetchpriority="high"` with explicit dimensions for better LCP.
-- Services/Portfolio images use `loading="lazy"`, `decoding="async"`, and `sizes` for responsive loading.
-- Success/error messages use `aria-live="polite"`.
+## Tips to customize
+- Change brand copy and CTAs in `src/i18n/strings.js`
+- Update palette, shadows, and rounded corners in `src/index.css`
+- Swap images in `src/assets/images/`
+- Tweak animations in `src/css/animations.css`
 
-## Deployment (Vercel)
-This project includes `vercel.json` in the `frontend/` folder:
-- `buildCommand`: `npm run build`
-- `outputDirectory`: `dist`
-- `framework`: `vite`
-- Caching headers for `/assets/*`
+---
 
-Steps:
-1) Push the repo to GitHub.
-2) Import the project in Vercel and select the `frontend/` folder as the root.
-3) In Vercel Project Settings → Environment Variables, add (as needed):
-   - `VITE_BACKEND_URL`
-   - `VITE_WHATSAPP_NUMBER=233508748443`
-   - `VITE_WHATSAPP_MESSAGE=Hello Arkyn! I would like to talk about a project.`
-4) Deploy. Your `robots.txt` and `sitemap.xml` already reference `https://arkyne.vercel.app`. Update if your domain differs.
+## Under the hood (for curious minds)
+- React 19 + Vite 7
+- CSS with utility classes and component styles
+- Optimized images (`loading="lazy"`, `decoding="async"`, `sizes`)
+- Lighthouse‑friendly (reduced CLS, eager hero image)
 
-## Backend (Optional)
-There is a Node/Express backend in `../backend/` with newsletter and contact endpoints. If you run it locally:
+---
+
+## Need the backend?
+There’s a tiny Node/Express server with newsletter + contact endpoints in `../backend/`. Run it if you want the forms to save:
 ```bash
 cd ../backend
 npm install
 npm run dev
 ```
-Set `VITE_BACKEND_URL` to your server URL in the frontend `.env` for production.
+Then set `VITE_BACKEND_URL` to your backend URL for production.
 
-## Branding & Design System
-- Primary: `#3C2A4D` (deep purple), Accent: `#E9C46A` (gold), Secondary: `#F4A261` (orange), Background: `#F5F3F0` (cream)
-- Rounded corners (10–14px), subtle purple‑tint shadows, Inter typography, card‑based UI
+---
 
-## License
-MIT © Arkyn
+Made with care by Arkyn.
