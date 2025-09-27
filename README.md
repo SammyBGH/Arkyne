@@ -43,9 +43,9 @@ Welcome! This is Arkyn’s polished, responsive website built with React + Vite.
 ## Environment (copy‑paste this)
 Create `frontend/.env` with any of the below you need:
 ```
-VITE_BACKEND_URL=
-VITE_WHATSAPP_NUMBER=233508748443
-VITE_WHATSAPP_MESSAGE=Hello Arkyn! I would like to talk about a project.
+VITE_BACKEND_URL
+VITE_WHATSAPP_NUMBER
+VITE_WHATSAPP_MESSAGE
 ```
 Notes:
 - Leave `VITE_BACKEND_URL` empty for local dev. Dev server proxies `/api` to `http://localhost:5001`.
