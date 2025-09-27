@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../css/Contact.css';
+import { useI18n } from '../i18n/I18nProvider.jsx';
 
 export default function Contact() {
+  const { t } = useI18n();
   const phone = import.meta.env.VITE_WHATSAPP_NUMBER || '233508748443';
   const messageText = import.meta.env.VITE_WHATSAPP_MESSAGE || 'Hello Arkyn! I would like to talk about a project.';
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(messageText)}`;
@@ -85,8 +87,8 @@ export default function Contact() {
     <section id="contact" className="section contact">
       <div className="contact-grid">
         <div className="contact-card">
-          <h2>Let’s build something together</h2>
-          <p>Prefer WhatsApp? Tap the button to start a conversation. We generally respond within one business day.</p>
+          <h2>{t('contact.title')}</h2>
+          <p>{t('contact.sub')}</p>
 
           <button
             className="btn whatsapp"
@@ -94,12 +96,12 @@ export default function Contact() {
             disabled={loading}
             type="button"
           >
-            Chat on WhatsApp
+            {t('contact.whatsapp')}
           </button>
 
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
             <label>
-              Name<span style={{ color: 'red' }}>*</span>
+              {t('contact.name')}<span style={{ color: 'red' }}>*</span>
               <input
                 type="text"
                 name="name"
@@ -111,7 +113,7 @@ export default function Contact() {
             </label>
 
             <label>
-              Email
+              {t('contact.email')}
               <input
                 type="email"
                 name="email"
@@ -122,7 +124,7 @@ export default function Contact() {
             </label>
 
             <label>
-              Message<span style={{ color: 'red' }}>*</span>
+              {t('contact.message')}<span style={{ color: 'red' }}>*</span>
               <textarea
                 name="message"
                 rows="5"
@@ -134,24 +136,24 @@ export default function Contact() {
             </label>
 
             <button className="btn primary" type="submit" disabled={loading}>
-              {loading ? 'Sending...' : 'Send Message'}
+              {loading ? t('contact.sending') : t('contact.send')}
             </button>
           </form>
 
           {status === 'success' && (
             <p className={`success-msg${fadeOut ? ' fade-out' : ''}`}>
-              Thanks! We’ll get back to you soon.
+              {t('contact.ok')}
             </p>
           )}
           {status === 'error' && (
             <p className={`error-msg${fadeOut ? ' fade-out' : ''}`}>
-              Please fill in the required fields correctly.
+              {t('contact.err')}
             </p>
           )}
 
           <div className="contact-info" style={{ marginTop: 24 }}>
-            <div><strong>Email:</strong> <span>arkyne.tech1@gmail.com</span></div>
-            <div><strong>Location:</strong> <span>Kumasi, Ghana</span></div>
+            <div><strong>{t('contact.info_email')}:</strong> <span>arkyne.tech1@gmail.com</span></div>
+            <div><strong>{t('contact.info_location')}:</strong> <span>{t('contact.location_value')}</span></div>
           </div>
         </div>
 

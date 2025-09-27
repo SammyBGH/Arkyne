@@ -5,6 +5,12 @@
   align-items: start;
 }
 
+/* Tablet */
+@media (max-width: 1024px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .btn.whatsapp { width: 100%; max-width: 400px; }
+}
+
 .contact-card {
   background: white;
   padding: 22px;

@@ -5,6 +5,12 @@
   align-items: start;
 }
 
+/* Tablet */
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-stats { flex-direction: row; flex-wrap: wrap; gap: 12px; }
+}
+
 .about-card {
   background: white;
   border-radius: 14px;

@@ -1,10 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../css/Portfolio.css';
+import '../css/animations.css';
+import ScrollReveal from './ScrollReveal';
 import p1 from '../assets/images/portfolio-1.png';
 import p2 from '../assets/images/portfolio-2.png';
 import p3 from '../assets/images/portfolio-3.png';
 import p4 from '../assets/images/portfolio-4.png';
 import p5 from '../assets/images/portfolio-5.png';
+import { useI18n } from '../i18n/I18nProvider.jsx';
 
 const items = [
   { id: 1, img: p1, title: 'Imagen — Image Classifier' },
@@ -15,9 +18,12 @@ const items = [
 ];
 
 export default function Portfolio() {
+  const { t } = useI18n();
   const [showAll, setShowAll] = useState(false);
   const [maxHeight, setMaxHeight] = useState('auto');
   const containerRef = useRef(null);
+  const [active, setActive] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const calculateMaxHeight = () => {
     if (!containerRef.current) return;
@@ -54,24 +60,61 @@ export default function Portfolio() {
     return () => window.removeEventListener('resize', calculateMaxHeight);
   }, [showAll]);
 
+  // Modal keyboard close
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') setModalOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  const openCaseStudy = (item) => {
+    setActive({
+      ...item,
+      description:
+        'A polished, production-ready build focusing on performance, accessibility, and a delightful user experience. We partnered closely with stakeholders to define scope, iterate quickly, and ship value.',
+      tags: ['Design', 'Frontend', 'Backend', 'Performance'],
+      link: '#contact'
+    });
+    setModalOpen(true);
+  };
+
+  const closeModal = () => setModalOpen(false);
+
   return (
     <section id="portfolio" className="section portfolio">
-      <h2>Selected Work</h2>
-      <p className="sub">A small sample of projects we've shipped.</p>
+      <h2 className="text-gradient animate-fade-in-up">{t('portfolio.title')}</h2>
+      <p className="sub animate-fade-in-up animate-delay-100">{t('portfolio.sub')}</p>
 
       <div
         className="portfolio-grid-wrapper"
         style={{ maxHeight }}
       >
         <div className="portfolio-grid" ref={containerRef}>
-          {items.map(it => (
-            <div className="port-item" key={it.id}>
-              <img src={it.img} alt={it.title} />
-              <div className="overlay">
-                <h4>{it.title}</h4>
-                <a href="#contact" className="link">Discuss this</a>
+          {items.map((it, i) => (
+            <ScrollReveal key={it.id} delay={150 + i * 80}>
+              <div
+                className="port-item interactive-card hover-lift"
+                onClick={() => openCaseStudy(it)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && openCaseStudy(it)}
+                aria-label={`Open case study: ${it.title}`}
+              >
+                <img
+                  src={it.img}
+                  alt={it.title}
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 700px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="overlay">
+                  <h4>{it.title}</h4>
+                  <span className="view-link">{t('portfolio.view')}</span>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
@@ -81,9 +124,34 @@ export default function Portfolio() {
           className="more-btn"
           onClick={() => setShowAll(!showAll)}
         >
-          {showAll ? 'Show Less' : 'More'}
+          {showAll ? t('portfolio.less') : t('portfolio.more')}
         </button>
       </div>
+
+      {/* Modal */}
+      {modalOpen && active && (
+        <div className="modal-backdrop" onClick={closeModal} role="dialog" aria-modal="true">
+          <div className="modal-card animate-scale-in" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close focus-ring" aria-label="Close" onClick={closeModal}>×</button>
+            <div className="modal-media">
+              <img src={active.img} alt={active.title} />
+            </div>
+            <div className="modal-content">
+              <h3>{active.title}</h3>
+              <p>{active.description}</p>
+              <div className="tags">
+                {active.tags.map((t) => (
+                  <span key={t} className="tag">{t}</span>
+                ))}
+              </div>
+              <div className="modal-actions">
+                <a className="btn primary focus-ring" href={active.link}>{t('portfolio.discuss')}</a>
+                <button className="btn ghost focus-ring" onClick={closeModal}>{t('portfolio.close')}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../css/Navbar.css';
 import logo from '../assets/images/logo.png';
+import { useI18n } from '../i18n/I18nProvider.jsx';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeId, setActiveId] = useState('hero');
   const navRef = useRef(null);
+  const { lang, setLang, t } = useI18n();
 
   // Handle scroll shadow/color
   useEffect(() => {
@@ -13,6 +16,30 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Observe sections to set active nav link
+  useEffect(() => {
+    const sectionIds = ['hero', 'about', 'services', 'portfolio', 'testimonials', 'contact'];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-40% 0px -50% 0px', threshold: 0.01 }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+    return () => observer.disconnect();
+  }, []);
+
+  // (Removed dark mode toggle per request)
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -26,12 +53,12 @@ export default function Navbar() {
   }, [open]);
 
   const links = [
-    { id: 'hero', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'services', label: 'Services' },
-    { id: 'portfolio', label: 'Portfolio' },
-    { id: 'testimonials', label: 'Testimonials' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'hero', key: 'home' },
+    { id: 'about', key: 'about' },
+    { id: 'services', key: 'services' },
+    { id: 'portfolio', key: 'portfolio' },
+    { id: 'testimonials', key: 'testimonials' },
+    { id: 'contact', key: 'contact' }
   ];
 
   return (
@@ -44,10 +71,28 @@ export default function Navbar() {
 
         <nav className={`navlinks ${open ? 'open' : ''}`}>
           {links.map(l => (
-            <a key={l.id} href={`#${l.id}`} onClick={() => setOpen(false)}>
-              {l.label}
+            <a
+              key={l.id}
+              href={`#${l.id}`}
+              onClick={() => setOpen(false)}
+              className={activeId === l.id ? 'active' : ''}
+              aria-current={activeId === l.id ? 'page' : undefined}
+            >
+              {t(`nav.${l.key}`)}
             </a>
           ))}
+          <div className="lang-toggle" role="group" aria-label="Language switcher">
+            <button
+              type="button"
+              className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+              onClick={() => setLang('en')}
+            >EN</button>
+            <button
+              type="button"
+              className={`lang-btn ${lang === 'fr' ? 'active' : ''}`}
+              onClick={() => setLang('fr')}
+            >FR</button>
+          </div>
         </nav>
 
         <button

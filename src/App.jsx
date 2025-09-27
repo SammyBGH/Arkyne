@@ -7,6 +7,9 @@ import Portfolio from './components/Portfolio';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from "./components/Footer";
+import FAQ from './components/FAQ';
+import Process from './components/Process';
+import CTABand from './components/CTABand';
 
 export default function App() {
   return (
@@ -18,6 +21,9 @@ export default function App() {
         <Services />
         <Portfolio />
         <Testimonials />
+        <Process />
+        <CTABand />
+        <FAQ />
         <Contact />
         <Footer />
       </main>

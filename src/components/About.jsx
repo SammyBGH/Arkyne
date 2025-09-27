@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../css/About.css';
+import '../css/animations.css';
+import ScrollReveal from './ScrollReveal';
+import { useI18n } from '../i18n/I18nProvider.jsx';
 
 export default function About() {
+  const { t } = useI18n();
   const stats = [
-    { value: 6, suffix: '+', label: 'Years experience' },
-    { value: 50, suffix: '+', label: 'Projects completed' },
-    { value: 99, suffix: '%', label: 'Client satisfaction' }
+    { value: 6, suffix: t('about.stats.0.suffix'), label: t('about.stats.0.label') },
+    { value: 50, suffix: t('about.stats.1.suffix'), label: t('about.stats.1.label') },
+    { value: 99, suffix: t('about.stats.2.suffix'), label: t('about.stats.2.label') }
   ];
 
   const [counts, setCounts] = useState(stats.map(() => 0));
@@ -58,26 +62,34 @@ export default function About() {
   return (
     <section id="about" className="section about" ref={sectionRef}>
       <div className="about-grid">
-        <div className="about-card">
-          <h2>About Arkyn</h2>
-          <p>
-            Arkyn is a boutique studio that blends product thinking, beautiful interfaces and robust engineering.
-            We work with startups and organisations to ship digital products that people enjoy using.
-          </p>
-          <ul>
-            <li>Human-centered design</li>
-            <li>End-to-end product development</li>
-            <li>Performance and accessibility-first</li>
-          </ul>
-        </div>
-        <div className="about-stats">
-          {stats.map((stat, i) => (
-            <div className="stat" key={stat.label}>
-              <strong>{counts[i]}{stat.suffix}</strong>
-              <span>{stat.label}</span>
-            </div>
-          ))}
-        </div>
+        <ScrollReveal delay={200}>
+          <div className="about-card interactive-card hover-lift">
+            <h2 className="animate-fade-in-up">{t('about.title')}</h2>
+            <p className="animate-fade-in-up animate-delay-100">
+              {t('about.body')}
+            </p>
+            <ul className="animate-fade-in-up animate-delay-200">
+              {t('about.bullets').map((b, i) => (
+                <li key={i}>{b}</li>
+              ))}
+            </ul>
+          </div>
+        </ScrollReveal>
+        
+        <ScrollReveal delay={400}>
+          <div className="about-stats">
+            {stats.map((stat, i) => (
+              <div 
+                className="stat hover-glow smooth-transition animate-bounce-in" 
+                key={stat.label}
+                style={{ animationDelay: `${i * 0.2}s` }}
+              >
+                <strong className="animate-pulse">{counts[i]}{stat.suffix}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
