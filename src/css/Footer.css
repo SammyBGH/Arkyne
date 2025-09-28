@@ -49,7 +49,7 @@
 }
 
 .footer-nav a:hover {
-  color: #d4a373; /* soft gold accent */
+  color: var(--color-accent); /* soft gold accent */
 }
 
 /* Social icons */
@@ -66,22 +66,36 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(233,196,106,0.12);
-  color: #E9C46A;
-  box-shadow: 0 6px 18px rgba(60,42,77,0.15);
+  background: rgba(216,178,94,0.12);
+  color: var(--color-accent);
+  box-shadow: 0 6px 18px rgba(43,27,58,0.15);
+  border: 1px solid rgba(216,178,94,0.25);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .social:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(60,42,77,0.25);
-  background: rgba(233,196,106,0.18);
+  box-shadow: 0 10px 24px rgba(43,27,58,0.25);
+  background: rgba(216,178,94,0.18);
+  border-color: rgba(216,178,94,0.45);
+}
+
+.social:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(216,178,94,0.35), 0 10px 24px rgba(43,27,58,0.25);
+}
+
+/* Ensure icons scale crisply and use current text color */
+.social svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 }
 
 /* Newsletter */
 .footer-newsletter {
   background: rgba(44, 33, 56, 0.5);
-  border: 1px solid rgba(233,196,106,0.2);
+  border: 1px solid rgba(216,178,94,0.2);
   border-radius: 12px;
   padding: 14px;
 }
@@ -100,18 +114,18 @@
 .newsletter-form input[type="email"] {
   flex: 1;
   background: #2d1f3a;
-  border: 1px solid rgba(233,196,106,0.35);
+  border: 1px solid rgba(216,178,94,0.35);
   color: #eae0d5;
   padding: 10px 12px;
   border-radius: 8px;
 }
 
-.nl-success { color: #E9C46A; margin-top: 8px; }
-.nl-error { color: #F4A261; margin-top: 8px; }
+.nl-success { color: var(--color-accent); margin-top: 8px; }
+.nl-error { color: var(--color-secondary); margin-top: 8px; }
 
 .footer-bottom {
   margin-top: 18px;
-  border-top: 1px solid rgba(233,196,106,0.18);
+  border-top: 1px solid rgba(216,178,94,0.18);
   padding-top: 12px;
 }
 

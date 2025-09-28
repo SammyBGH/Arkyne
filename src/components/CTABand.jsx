@@ -15,7 +15,7 @@ export default function CTABand() {
         <p>{t('cta.body')}</p>
         <div className="cta-actions">
           <a className="btn primary" href="#contact">{t('cta.contact')}</a>
-          <button className="btn ghost" onClick={onWhatsApp}>{t('cta.whatsapp')}</button>
+          <button className="btn whatsapp" onClick={onWhatsApp}>{t('cta.whatsapp')}</button>
         </div>
       </div>
     </section>

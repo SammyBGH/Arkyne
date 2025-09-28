@@ -25,7 +25,7 @@ export default function Hero() {
             <a className="btn primary hover-lift smooth-transition focus-ring" href="#services">
               {t('hero.cta_services')}
             </a>
-            <a className="btn ghost hover-glow smooth-transition focus-ring" href="#contact">
+            <a className="btn whatsapp hover-glow smooth-transition focus-ring" href="#contact">
               {t('hero.cta_whatsapp')}
             </a>
           </div>

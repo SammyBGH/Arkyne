@@ -1,5 +1,5 @@
 .testimonials h2 {
-  color: #3C2A4D;
+  color: #2B1B3A;
   margin-bottom: 6px;
 }
 
@@ -14,7 +14,7 @@
   background: white;
   padding: 20px 22px;
   border-radius: 14px;
-  box-shadow: 0 8px 30px rgba(60, 42, 77, 0.06);
+  box-shadow: 0 8px 30px rgba(43, 27, 58, 0.06);
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -23,7 +23,7 @@
 }
 
 .test-card:hover {
-  box-shadow: 0 16px 40px rgba(60, 42, 77, 0.12);
+  box-shadow: 0 16px 40px rgba(43, 27, 58, 0.12);
   transform: translateY(-4px);
 }
 
@@ -35,7 +35,6 @@
 }
 
 .meta {
-  display: flex;
   gap: 14px;
   align-items: center;
   margin-top: auto;
@@ -45,8 +44,7 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: #E9C46A;
-  display: flex;
+  background: var(--color-accent);
   align-items: center;
   justify-content: center;
   font-weight: 800;
@@ -56,14 +54,8 @@
 }
 
 .meta strong {
-  color: #3C2A4D;
+  color: #2B1B3A;
   font-weight: 700;
-}
-
-.role {
-  font-size: 0.85rem;
-  color: #6b5a6a;
-  margin-top: 2px;
 }
 
 /* Carousel layout */
@@ -84,12 +76,6 @@
   padding: 0 4px;
 }
 
-/* Ensure card max width and centering */
-.carousel-slide .test-card {
-  max-width: 760px;
-  margin: 0 auto;
-}
-
 /* Carousel controls */
 .carousel-btn {
   position: absolute;
@@ -98,20 +84,20 @@
   width: 40px;
   height: 40px;
   border-radius: 999px;
-  border: 2px solid rgba(233,196,106,0.6);
-  background: rgba(60, 42, 77, 0.85);
-  color: #E9C46A;
+  border: 2px solid rgba(216,178,94,0.6);
+  background: rgba(43, 27, 58, 0.85);
+  color: var(--color-accent);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-  box-shadow: 0 8px 24px rgba(60, 42, 77, 0.2);
+  box-shadow: 0 8px 24px rgba(43, 27, 58, 0.2);
 }
 
 .carousel-btn:hover {
-  background: rgba(60, 42, 77, 1);
-  box-shadow: 0 12px 30px rgba(60, 42, 77, 0.3);
+  background: rgba(43, 27, 58, 1);
+  box-shadow: 0 12px 30px rgba(43, 27, 58, 0.3);
   transform: translateY(-50%) scale(1.06);
 }
 
@@ -130,14 +116,14 @@
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  background: rgba(60,42,77,0.25);
-  border: 1px solid rgba(233,196,106,0.7);
+  background: rgba(43,27,58,0.25);
+  border: 1px solid rgba(216,178,94,0.7);
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .dot:hover { transform: scale(1.1); }
-.dot.active { background: #E9C46A; }
+.dot.active { background: var(--color-accent); }
 
 /* responsive */
 @media (max-width: 1000px) {

@@ -1,26 +1,25 @@
 /* Global */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
 /* Design tokens */
 :root {
-  --color-bg: #F5F3F0;
-  --color-text: #2A2A2A;
-  --color-text-muted: #333;
-  --color-primary: #3C2A4D;
-  --color-accent: #E9C46A;
-  --color-secondary: #F4A261;
+  --color-bg: #F6F4F1; /* Option A background */
+  --color-text: #26262A; /* Option A text */
+  --color-text-muted: #3A3A40; /* Option A muted text */
+  --color-primary: #2B1B3A; /* Deeper professional purple */
+  --color-accent: #D8B25E; /* Muted gold */
+  --color-secondary: #D68B5A; /* Muted orange */
+  --color-whatsapp: #2E8F75; /* Muted teal-green to harmonize with palette */
   --color-card: #ffffff;
-  --shadow-md: 0 10px 30px rgba(60,42,77,0.06);
+  --shadow-md: 0 10px 30px rgba(43,27,58,0.06);
   --radius-md: 12px;
+  --navbar-height: 64px;
 }
+
 
 /* Dark theme */
 html[data-theme="dark"] {
   --color-bg: #141017;
-  --color-text: #EDE7F2;
   --color-text-muted: #CFC6D9;
-  --color-card: #1E1624;
   --shadow-md: 0 10px 30px rgba(0,0,0,0.3);
 }
 
@@ -31,9 +30,7 @@ body {
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   transition: background 0.3s ease, color 0.3s ease;
-  overflow-x: hidden; /* prevent accidental horizontal scroll */
 }
-
 /* section container */
 .section {
   padding: 80px 20px;
@@ -41,18 +38,100 @@ body {
   margin: auto;
 }
 
-/* basic headings */
-h1, h2, h3 { letter-spacing: -0.02em; color: var(--color-text); }
-p { color: var(--color-text-muted); line-height: 1.6; }
+/* Headings - rebuilt */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
 
-/* Type scale */
-h1 { font-size: clamp(2rem, 4vw, 2.6rem); }
-h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
-h3 { font-size: clamp(1.1rem, 2.5vw, 1.4rem); }
+h1 { font-weight: 800; font-size: clamp(2.2rem, 4.5vw, 3rem); }
+h2 { font-weight: 800; font-size: clamp(1.6rem, 3.5vw, 2.2rem); }
+h3 { font-weight: 700; font-size: clamp(1.25rem, 3vw, 1.6rem); }
+h4 { font-weight: 700; font-size: 1.125rem; }
+h5 { font-weight: 600; font-size: 1rem; }
+h6 { font-weight: 600; font-size: 0.95rem; }
 
-/* utility */
-.container-grid { display: grid; gap: 24px; }
-.center { display:flex; align-items:center; justify-content:center; }
+/* Paragraphs */
+p { color: var(--color-text); line-height: 1.65; }
+.muted { color: var(--color-text-muted); }
+
+/* Buttons - global system */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+}
+
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(216,178,94,0.45); }
+
+/* Primary: deep purple bg with accent text */
+.btn.primary,
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-accent);
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 3px 8px rgba(43,27,58,0.18);
+}
+
+.btn.primary:hover,
+.btn--primary:hover { filter: brightness(1.06); box-shadow: 0 6px 14px rgba(43,27,58,0.28); }
+
+/* Secondary: accent bg with dark text for contrast */
+.btn.secondary,
+.btn--secondary {
+  background: var(--color-secondary);
+  color: #2B1B3A;
+  border: 2px solid var(--color-secondary);
+  box-shadow: 0 3px 8px rgba(214,139,90,0.25);
+}
+
+.btn.secondary:hover,
+.btn--secondary:hover { filter: brightness(0.98); box-shadow: 0 6px 14px rgba(214,139,90,0.35); }
+
+/* Ghost: transparent with accent border/text and subtle bg on hover */
+.btn.ghost,
+.btn--ghost {
+  background: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  box-shadow: none;
+}
+
+.btn.ghost:hover,
+.btn--ghost:hover {
+  background: rgba(216,178,94,0.15);
+  box-shadow: 0 4px 10px rgba(216,178,94,0.25);
+}
+
+/* WhatsApp button variant (used across site) */
+.btn.whatsapp,
+.btn--whatsapp {
+  background: transparent;
+  color: var(--color-whatsapp);
+  border: 2px solid var(--color-whatsapp);
+  box-shadow: none;
+}
+.btn.whatsapp:hover,
+.btn--whatsapp:hover {
+  background: rgba(46,143,117,0.12);
+  box-shadow: 0 4px 10px rgba(46,143,117,0.22);
+}
+
+.btn.whatsapp:focus-visible,
+.btn--whatsapp:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(46,143,117,0.35);
+}
 
 /* Responsive media */
 img, video, canvas, svg { max-width: 100%; height: auto; }
@@ -81,5 +160,5 @@ html[data-theme="dark"] .modal-card {
 }
 
 html[data-theme="dark"] .hero-section {
-  background: linear-gradient(120deg, #141017 0%, #1a1321 40%, #3C2A4D 100%);
+  background: linear-gradient(120deg, #141017 0%, #1a1321 40%, #2B1B3A 100%);
 }

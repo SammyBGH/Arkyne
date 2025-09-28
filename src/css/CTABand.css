@@ -1,11 +1,11 @@
 .cta-band { padding-top: 16px; padding-bottom: 24px; }
 
-.cta-card { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 16px 44px rgba(60,42,77,0.10); text-align: center; }
-.cta-card h2 { margin-bottom: 8px; color: #3C2A4D; }
-.cta-card p { color:#4a4350; margin-bottom: 14px; }
+.cta-card { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 16px 44px rgba(43,27,58,0.10); text-align: center; }
+.cta-card h2 { margin-bottom: 8px; color: #2B1B3A; }
+.cta-card p { color: #3A3A40; margin-bottom: 14px; }
 
 .cta-actions { display: flex; gap: 12px; justify-content: center; }
-.btn.primary { background: #3C2A4D; color: #fff; border-radius: 10px; padding: 10px 16px; border: none; cursor: pointer; }
-.btn.ghost { background: transparent; color:#3C2A4D; border: 2px solid #E9C46A; border-radius: 10px; padding: 8px 16px; cursor: pointer; }
+.btn.primary { background: #2B1B3A; color: var(--color-accent); border-radius: 10px; padding: 10px 16px; border: 2px solid #2B1B3A; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--color-accent); border: 2px solid var(--color-accent); border-radius: 10px; padding: 8px 16px; cursor: pointer; }
 .btn.primary:hover { filter: brightness(1.05); }
-.btn.ghost:hover { background: rgba(233,196,106,0.15); }
+.btn.ghost:hover { background: rgba(216,178,94,0.15); }
