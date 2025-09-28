@@ -9,7 +9,7 @@ export const STRINGS = {
       contact: 'Contact'
     },
     hero: {
-      title: 'Arkyn - Refuge of Light',
+      title: 'Arkyne - Refuge of Light',
       body1: 'We craft human-centred digital products, websites, apps, and brand experiences — built for clarity and trust.',
       body2: 'From idea to launch, we make tech feel personal.',
       cta_services: 'Explore Services',
@@ -20,8 +20,8 @@ export const STRINGS = {
       feat2_d: 'Reliable, production-ready stacks'
     },
     about: {
-      title: 'About Arkyn',
-      body: 'Arkyn is a boutique studio that blends product thinking, beautiful interfaces and robust engineering. We work with startups and organisations to ship digital products that people enjoy using.',
+      title: 'About Arkyne',
+      body: 'Arkyne is a boutique studio that blends product thinking, beautiful interfaces and robust engineering. We work with startups and organisations to ship digital products that people enjoy using.',
       bullets: [
         'Human-centered design',
         'End-to-end product development',
@@ -93,7 +93,7 @@ export const STRINGS = {
       location_value: 'Kumasi, Ghana'
     },
     footer: {
-      brand: 'Arkyn',
+      brand: 'Arkyne',
       tagline: 'Refuge of Light — We craft human‑centred digital products.',
       nav: { about: 'About', services: 'Services', portfolio: 'Portfolio', contact: 'Contact' },
       nl_title: 'Get occasional updates',
@@ -101,7 +101,7 @@ export const STRINGS = {
       nl_subscribe: 'Subscribe',
       nl_error: 'Please enter a valid email.',
       nl_success: 'Thanks for subscribing!',
-      bottom: year => `© ${year} Arkyn — Built with care`
+      bottom: year => `© ${year} Arkyne — Built with care`
     }
   },
   fr: {
@@ -114,7 +114,7 @@ export const STRINGS = {
       contact: 'Contact'
     },
     hero: {
-      title: 'Arkyn - Refuge de lumière',
+      title: 'Arkyne - Refuge de lumière',
       body1: 'Nous concevons des produits numériques centrés sur l’humain — sites, apps et expériences de marque — pensés pour la clarté et la confiance.',
       body2: 'De l’idée au lancement, nous rendons la tech plus personnelle.',
       cta_services: 'Découvrir les services',
@@ -125,8 +125,8 @@ export const STRINGS = {
       feat2_d: 'Stacks fiables et prêts pour la production'
     },
     about: {
-      title: 'À propos d’Arkyn',
-      body: 'Arkyn est un studio boutique mêlant réflexion produit, interfaces soignées et ingénierie robuste. Nous aidons startups et organisations à livrer des produits que les gens aiment utiliser.',
+      title: 'À propos d’Arkyne',
+      body: 'Arkyne est un studio boutique mêlant réflexion produit, interfaces soignées et ingénierie robuste. Nous aidons startups et organisations à livrer des produits que les gens aiment utiliser.',
       bullets: [
         'Design centré utilisateur',
         'Développement produit de A à Z',
@@ -198,7 +198,7 @@ export const STRINGS = {
       location_value: 'Kumasi, Ghana'
     },
     footer: {
-      brand: 'Arkyn',
+      brand: 'Arkyne',
       tagline: 'Refuge de lumière — Nous créons des produits numériques centrés sur l’humain.',
       nav: { about: 'À propos', services: 'Services', portfolio: 'Portfolio', contact: 'Contact' },
       nl_title: 'Recevoir des nouvelles occasionnelles',
@@ -206,7 +206,7 @@ export const STRINGS = {
       nl_subscribe: 'S’abonner',
       nl_error: 'Veuillez saisir un e‑mail valide.',
       nl_success: "Merci pour l’abonnement !",
-      bottom: year => `© ${year} Arkyn — Conçu avec soin`
+      bottom: year => `© ${year} Arkyne — Conçu avec soin`
     }
   }
 };

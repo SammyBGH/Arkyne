@@ -65,8 +65,8 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-inner" ref={navRef}>
         <a className="brand" href="#hero" onClick={() => setOpen(false)}>
-          <img src={logo} alt="Arkyn logo" />
-          <span>Arkyn</span>
+          <img src={logo} alt="Arkyne logo" />
+          <span>Arkyne</span>
         </a>
 
         <nav className={`navlinks ${open ? 'open' : ''}`}>
