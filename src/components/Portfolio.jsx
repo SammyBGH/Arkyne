@@ -164,7 +164,7 @@ export default function Portfolio() {
                   onClick={() => {
                     try {
                       const msg = `Hi, Arkyne, I would like to discuss: ${active.title}.`;
-                      sessionStorage.setItem('contactPrefill', msg);
+                      window.dispatchEvent(new CustomEvent('contact:prefill', { detail: msg }));
                     } catch {}
                     beginClose(500);
                   }}

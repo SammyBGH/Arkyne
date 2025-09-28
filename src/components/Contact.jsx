@@ -16,16 +16,15 @@ export default function Contact() {
   const [status, setStatus] = useState(null); // 'success' | 'error' | null
   const [fadeOut, setFadeOut] = useState(false);
 
-  // Prefill from sessionStorage if coming from Portfolio "Discuss this"
+  // Listen for prefill events from Portfolio "Discuss this"
   useEffect(() => {
-    try {
-      const pre = sessionStorage.getItem('contactPrefill');
-      if (pre && !form.message) {
-        setForm((f) => ({ ...f, message: pre }));
-        sessionStorage.removeItem('contactPrefill');
-      }
-    } catch {}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const onPrefill = (e) => {
+      const pre = typeof e.detail === 'string' ? e.detail : '';
+      // Only set if user hasn't typed anything yet
+      setForm((f) => (f.message ? f : { ...f, message: pre }));
+    };
+    window.addEventListener('contact:prefill', onPrefill);
+    return () => window.removeEventListener('contact:prefill', onPrefill);
   }, []);
 
   const handleChange = e => {
