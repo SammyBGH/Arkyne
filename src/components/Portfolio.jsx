@@ -161,7 +161,13 @@ export default function Portfolio() {
                 <a
                   className="btn primary focus-ring"
                   href={active.link}
-                  onClick={() => beginClose(500)}
+                  onClick={() => {
+                    try {
+                      const msg = `Hi, Arkyne, I would like to discuss: ${active.title}.`;
+                      sessionStorage.setItem('contactPrefill', msg);
+                    } catch {}
+                    beginClose(500);
+                  }}
                 >
                   {t('portfolio.discuss')}
                 </a>
