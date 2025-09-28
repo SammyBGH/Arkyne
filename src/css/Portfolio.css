@@ -83,6 +83,13 @@
   }
 }
 
+/* Desktop-only subtle divider between media and content */
+@media (min-width: 861px) {
+  .modal-content {
+    border-left: 1px solid rgba(43,27,58,0.06);
+  }
+}
+
 
 .modal-close {
   position: absolute;

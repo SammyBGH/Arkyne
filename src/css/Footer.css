@@ -4,7 +4,8 @@
   padding: 1rem 2rem;
   text-align: center;
   font-size: 0.9rem;
-  border-top: 2px solid #a7795d; /* subtle accent divider */
+  border-top: none;
+  box-shadow: 0 -1px 0 rgba(216,178,94,0.10) inset; /* soft top inset line */
 }
 
 .footer-content {
@@ -62,7 +63,7 @@
 .social {
   width: 36px;
   height: 36px;
-  border-radius: 10px;
+  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;

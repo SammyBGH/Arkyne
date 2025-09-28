@@ -17,7 +17,7 @@ export default function Services() {
   return (
     <section id="services" className="section services">
       <h2 className="text-gradient animate-fade-in-up">{t('services.title')}</h2>
-      <p className="sub animate-fade-in-up animate-delay-100">{t('services.sub')}</p>
+      <p className="sub lede animate-fade-in-up animate-delay-100">{t('services.sub')}</p>
 
       <div className="services-grid">
         {items.map((s, i) => (
@@ -43,6 +43,7 @@ export default function Services() {
           </ScrollReveal>
         ))}
       </div>
+      <div className="divider-soft" aria-hidden="true" />
     </section>
   );
 }

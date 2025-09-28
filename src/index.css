@@ -10,7 +10,7 @@
   --color-secondary: #D68B5A; /* Muted orange */
   --color-whatsapp: #2E8F75; /* Muted teal-green to harmonize with palette */
   --color-card: #ffffff;
-  --shadow-md: 0 10px 30px rgba(43,27,58,0.06);
+  --shadow-md: 0 6px 16px rgba(43,27,58,0.08);
   --radius-md: 12px;
   --navbar-height: 64px;
 }
@@ -56,6 +56,9 @@ h6 { font-weight: 600; font-size: 0.95rem; }
 p { color: var(--color-text); line-height: 1.65; }
 .muted { color: var(--color-text-muted); }
 
+/* Lede text for section introductions */
+.lede { font-size: clamp(1rem, 1.2vw, 1.125rem); color: var(--color-text); opacity: 0.92; }
+
 /* Buttons - global system */
 .btn {
   display: inline-flex;
@@ -68,7 +71,7 @@ p { color: var(--color-text); line-height: 1.65; }
   font-size: 1rem;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+  transition: background 0.22s cubic-bezier(.22,.61,.36,1), color 0.22s cubic-bezier(.22,.61,.36,1), box-shadow 0.22s cubic-bezier(.22,.61,.36,1), border-color 0.22s cubic-bezier(.22,.61,.36,1), transform 0.15s ease;
 }
 
 .btn:active { transform: translateY(1px); }
@@ -106,11 +109,10 @@ p { color: var(--color-text); line-height: 1.65; }
   border: 2px solid var(--color-accent);
   box-shadow: none;
 }
-
 .btn.ghost:hover,
 .btn--ghost:hover {
-  background: rgba(216,178,94,0.15);
-  box-shadow: 0 4px 10px rgba(216,178,94,0.25);
+  background: rgba(216,178,94,0.10);
+  box-shadow: 0 4px 10px rgba(216,178,94,0.20);
 }
 
 /* WhatsApp button variant (used across site) */
@@ -123,9 +125,12 @@ p { color: var(--color-text); line-height: 1.65; }
 }
 .btn.whatsapp:hover,
 .btn--whatsapp:hover {
-  background: rgba(46,143,117,0.12);
-  box-shadow: 0 4px 10px rgba(46,143,117,0.22);
+  background: rgba(46,143,117,0.10);
+  box-shadow: 0 4px 10px rgba(46,143,117,0.20);
 }
+
+/* Section soft divider utility */
+.divider-soft { height: 60px; background: linear-gradient(180deg, rgba(43,27,58,0.04), transparent 60%); }
 
 .btn.whatsapp:focus-visible,
 .btn--whatsapp:focus-visible {
@@ -145,6 +150,16 @@ img, video, canvas, svg { max-width: 100%; height: auto; }
 .card-surface {
   background: var(--color-card);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+/* Unify card shadows across site */
+.about-card,
+.service-card,
+.test-card,
+.contact-card,
+.portfolio .port-item,
+.modal-card {
   box-shadow: var(--shadow-md);
 }
 

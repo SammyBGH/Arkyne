@@ -85,7 +85,7 @@ export default function Portfolio() {
   return (
     <section id="portfolio" className="section portfolio">
       <h2 className="text-gradient animate-fade-in-up">{t('portfolio.title')}</h2>
-      <p className="sub animate-fade-in-up animate-delay-100">{t('portfolio.sub')}</p>
+      <p className="sub lede animate-fade-in-up animate-delay-100">{t('portfolio.sub')}</p>
 
       <div
         className="portfolio-grid-wrapper"
@@ -152,6 +152,7 @@ export default function Portfolio() {
           </div>
         </div>
       )}
+      <div className="divider-soft" aria-hidden="true" />
     </section>
   );
 }

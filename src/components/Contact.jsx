@@ -88,7 +88,7 @@ export default function Contact() {
       <div className="contact-grid">
         <div className="contact-card">
           <h2>{t('contact.title')}</h2>
-          <p>{t('contact.sub')}</p>
+          <p className="lede">{t('contact.sub')}</p>
 
           <button
             className="btn whatsapp"
@@ -162,6 +162,7 @@ export default function Contact() {
           <p>Share a few lines about your product idea, timeline and budget. Or simply message us on WhatsApp and we'll take it from there.</p>
         </div>
       </div>
+      <div className="divider-soft" aria-hidden="true" />
     </section>
   );
 }

@@ -65,7 +65,7 @@ export default function About() {
         <ScrollReveal delay={200}>
           <div className="about-card interactive-card hover-lift">
             <h2 className="animate-fade-in-up">{t('about.title')}</h2>
-            <p className="animate-fade-in-up animate-delay-100">
+            <p className="lede animate-fade-in-up animate-delay-100">
               {t('about.body')}
             </p>
             <ul className="animate-fade-in-up animate-delay-200">
@@ -91,6 +91,7 @@ export default function About() {
           </div>
         </ScrollReveal>
       </div>
+      <div className="divider-soft" aria-hidden="true" />
     </section>
   );
 }
