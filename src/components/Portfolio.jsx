@@ -24,6 +24,7 @@ export default function Portfolio() {
   const containerRef = useRef(null);
   const [active, setActive] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
 
   const calculateMaxHeight = () => {
     if (!containerRef.current) return;
@@ -63,13 +64,14 @@ export default function Portfolio() {
   // Modal keyboard close
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === 'Escape') setModalOpen(false);
+      if (e.key === 'Escape') beginClose();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
   const openCaseStudy = (item) => {
+    setClosing(false);
     setActive({
       ...item,
       description:
@@ -80,7 +82,18 @@ export default function Portfolio() {
     setModalOpen(true);
   };
 
-  const closeModal = () => setModalOpen(false);
+  const closeModal = () => {
+    setModalOpen(false);
+    setClosing(false);
+  };
+
+  const beginClose = (delay = 300) => {
+    setClosing(true);
+    setTimeout(() => {
+      setModalOpen(false);
+      setClosing(false);
+    }, delay);
+  };
 
   return (
     <section id="portfolio" className="section portfolio">
@@ -130,9 +143,9 @@ export default function Portfolio() {
 
       {/* Modal */}
       {modalOpen && active && (
-        <div className="modal-backdrop" onClick={closeModal} role="dialog" aria-modal="true">
+        <div className={`modal-backdrop ${closing ? 'closing' : ''}`} onClick={() => beginClose()} role="dialog" aria-modal="true">
           <div className="modal-card animate-scale-in" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close focus-ring" aria-label="Close" onClick={closeModal}>×</button>
+            <button className="modal-close focus-ring" aria-label="Close" onClick={() => beginClose()}>×</button>
             <div className="modal-media">
               <img src={active.img} alt={active.title} />
             </div>
@@ -148,11 +161,11 @@ export default function Portfolio() {
                 <a
                   className="btn primary focus-ring"
                   href={active.link}
-                  onClick={closeModal}
+                  onClick={() => beginClose(500)}
                 >
                   {t('portfolio.discuss')}
                 </a>
-                <button className="btn ghost focus-ring" onClick={closeModal}>{t('portfolio.close')}</button>
+                <button className="btn ghost focus-ring" onClick={() => beginClose()}>{t('portfolio.close')}</button>
               </div>
             </div>
           </div>
