@@ -12,18 +12,21 @@
   z-index: 1500;
   transition: background 0.25s ease, box-shadow 0.25s ease, backdrop-filter 0.25s ease;
   padding: 12px 20px;
-  /* blend with hero gradient */
-  background: linear-gradient(120deg, rgba(245,243,240,0.70) 0%, rgba(236,232,243,0.65) 45%, rgba(43,27,58,0.18) 100%);
-  backdrop-filter: saturate(120%) blur(10px);
-  -webkit-backdrop-filter: saturate(120%) blur(10px);
-  border-bottom: 1px solid rgba(43,27,58,0.08);
+  /* translucent gradient to seamlessly blend with hero, with slightly stronger purple */
+  background: linear-gradient(
+    120deg,
+    rgba(245,243,240,0.78) 0%,
+    rgba(236,232,243,0.70) 42%,
+    rgba(43,27,58,0.22) 100%
+  );
+  backdrop-filter: saturate(120%) blur(8px);
+  -webkit-backdrop-filter: saturate(120%) blur(8px);
+  border-bottom: none;
 }
 
 .navbar.scrolled {
-  background: rgba(43,27,58,0.95);
-  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  background: linear-gradient(180deg, rgba(43,27,58,0.96) 0%, rgba(43,27,58,0.90) 100%);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18), 0 0 0 1px rgba(216,178,94,0.08) inset;
 }
 
 /* Make hamburger/icon readable on scrolled solid header */

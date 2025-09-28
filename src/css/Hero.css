@@ -1,8 +1,8 @@
 .hero-section {
-   min-height: calc(100vh - var(--navbar-height));
+   min-height: 100vh; /* allow background to extend behind header */
    display: flex;
    align-items: center;
-   margin-top: var(--navbar-height); /* avoid overlap with fixed navbar */
+   padding-top: var(--navbar-height); /* create space for content without creating a gap */
    background: linear-gradient(120deg, #F5F3F0 0%, #ECE8F3 45%, #2B1B3A 100%);
    position: relative;
    overflow: hidden;
