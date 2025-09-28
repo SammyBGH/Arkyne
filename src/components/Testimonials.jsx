@@ -3,7 +3,7 @@ import '../css/Testimonials.css';
 import '../css/animations.css';
 
 const notes = [
-  { name: 'Comfort A.', quote: 'Arkyn helped us ship quickly and thoughtfully. Highly recommended.' },
+  { name: 'Comfort A.', quote: 'Arkyne helped us ship quickly and thoughtfully. Highly recommended.' },
   { name: 'Paul N.', quote: 'Clean code, fast delivery, and excellent communication.' },
   { name: 'Maya K.', quote: 'Transformed our product and made it user-friendly.' }
 ];

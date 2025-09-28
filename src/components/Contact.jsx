@@ -5,7 +5,7 @@ import { useI18n } from '../i18n/I18nProvider.jsx';
 export default function Contact() {
   const { t } = useI18n();
   const phone = import.meta.env.VITE_WHATSAPP_NUMBER || '233508748443';
-  const messageText = import.meta.env.VITE_WHATSAPP_MESSAGE || 'Hello Arkyn! I would like to talk about a project.';
+  const messageText = import.meta.env.VITE_WHATSAPP_MESSAGE || 'Hello Arkyne! I would like to talk about a project.';
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(messageText)}`;
 
   const backendBaseUrl = import.meta.env.VITE_BACKEND_URL || '';

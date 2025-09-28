@@ -46,7 +46,7 @@ export default function Hero() {
           <div className="hero-image-container">
             <img 
               src={heroImg} 
-              alt="Arkyn illustration" 
+              alt="Arkyne illustration" 
               className="animate-float hover-scale smooth-transition"
               loading="eager"
               fetchpriority="high"

@@ -7,12 +7,20 @@ export function I18nProvider({ children }) {
   const [lang, setLang] = useState('en');
 
   useEffect(() => {
-    const stored = localStorage.getItem('arkyn-lang');
-    if (stored && (stored === 'en' || stored === 'fr')) setLang(stored);
+    // Read new key first, then fall back to legacy key
+    const current = localStorage.getItem('arkyne-lang');
+    const legacy = localStorage.getItem('arkyn-lang');
+    const val = current || legacy;
+    if (val && (val === 'en' || val === 'fr')) setLang(val);
+    // Migrate legacy key to new key if needed
+    if (!current && legacy) {
+      localStorage.setItem('arkyne-lang', legacy);
+      localStorage.removeItem('arkyn-lang');
+    }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('arkyn-lang', lang);
+    localStorage.setItem('arkyne-lang', lang);
   }, [lang]);
 
   const t = (path) => {

@@ -311,11 +311,11 @@
 }
 
 /* Fade-out utility */
-@keyframes arkynFadeOut {
+@keyframes arkyneFadeOut {
   from { opacity: 1; }
   to { opacity: 0; }
 }
 
 .fade-out {
-  animation: arkynFadeOut 0.5s forwards;
+  animation: arkyneFadeOut 0.5s forwards;
 }

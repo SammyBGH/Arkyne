@@ -1,6 +1,6 @@
-# Arkyn – Company Website
+# Arkyne – Company Website
 
-Welcome! This is Arkyn’s polished, responsive website built with React + Vite. It’s fast, animated, and easy to edit. This guide helps you run it, tweak content, and deploy.
+Welcome! This is Arkyne’s polished, responsive website built with React + Vite. It’s fast, animated, and easy to edit. This guide helps you run it, tweak content, and deploy.
 
 ---
 
@@ -94,4 +94,4 @@ Then set `VITE_BACKEND_URL` to your backend URL for production.
 
 ---
 
-Made with care by Arkyn.
+Made with care by Arkyne.
