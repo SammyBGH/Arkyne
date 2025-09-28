@@ -145,7 +145,13 @@ export default function Portfolio() {
                 ))}
               </div>
               <div className="modal-actions">
-                <a className="btn primary focus-ring" href={active.link}>{t('portfolio.discuss')}</a>
+                <a
+                  className="btn primary focus-ring"
+                  href={active.link}
+                  onClick={closeModal}
+                >
+                  {t('portfolio.discuss')}
+                </a>
                 <button className="btn ghost focus-ring" onClick={closeModal}>{t('portfolio.close')}</button>
               </div>
             </div>
