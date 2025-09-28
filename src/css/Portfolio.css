@@ -67,10 +67,20 @@
   background: #fff;
   border-radius: 16px;
   max-width: 960px;
+  max-height: 90vh; /* constrain total height */
   width: 100%;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(43, 27, 58, 0.25);
   position: relative;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+}
+
+/* Stack on smaller screens */
+@media (max-width: 860px) {
+  .modal-card {
+    grid-template-columns: 1fr;
+  }
 }
 
 
@@ -88,6 +98,38 @@
   line-height: 1;
   cursor: pointer;
 }
+
+.modal-close:hover { filter: brightness(1.05); box-shadow: 0 6px 16px rgba(43,27,58,0.22); }
+
+/* Media area */
+.modal-media {
+  background: #f7f5fb; /* subtle surface under image */
+}
+.modal-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Content area */
+.modal-content {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: auto; /* scroll content if too tall */
+}
+
+.modal-content h3 {
+  color: #2B1B3A;
+  margin-bottom: 4px;
+}
+
+.modal-content p {
+  color: #3d3d3d;
+  line-height: 1.6;
+}
 .tag {
   padding: 6px 10px;
   border-radius: 999px;
@@ -97,7 +139,50 @@
   font-size: 0.9rem;
 }
 
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
 .modal-actions {
   display: flex;
   gap: 10px;
+  margin-top: 12px;
+  align-items: center;
+}
+
+/* Small screen tweaks */
+@media (max-width: 860px) {
+  .modal-content { max-height: 60vh; }
+  .modal-actions { justify-content: center; flex-wrap: wrap; }
+}
+
+/* Show more / Show less button */
+.more-btn {
+  appearance: none;
+  background: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.12s ease;
+}
+
+.more-btn:hover {
+  background: rgba(216,178,94,0.12);
+  box-shadow: 0 4px 10px rgba(216,178,94,0.22);
+  transform: translateY(-1px);
+}
+
+.more-btn:active {
+  transform: translateY(0);
+}
+
+.more-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(216,178,94,0.32);
 }
