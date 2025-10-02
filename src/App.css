@@ -1,12 +1,4 @@
-/* App-level styles (kept minimal to complement index.css) */
-#root {
-    max-width: 1200px;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Optional helpers */
-  .card { padding: 2rem; }
+
   .read-the-docs { color: #888; }
   
   /* Custom scrollbar (matches frontend/src/index.css) */
