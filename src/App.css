@@ -1,34 +1,22 @@
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
 
-/* WebKit */
-*::-webkit-scrollbar {
+/* Custom scrollbar */
+::-webkit-scrollbar {
   width: 8px;
-  height: 8px;
-}
-*::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
-*::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-  border-radius: 8px;
-  border: 2px solid var(--scrollbar-thumb-border);
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
-}
-*::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-thumb-hover);
 }
 
-/* Dark theme adjustments */
-html[data-theme="dark"] {
-  scrollbar-color: #E9C46A transparent;
-}
-html[data-theme="dark"] *::-webkit-scrollbar-thumb {
-  border-color: rgba(20, 16, 23, 0.6);
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
 }
 
-/* Remove scrollbar arrows (WebKit) */
-*::-webkit-scrollbar-button {
-  display: none;
-  width: 0;
-  height: 0;
-  background: transparent;
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--accent-color));
 }
