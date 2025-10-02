@@ -6,6 +6,7 @@
   --color-text: #26262A; /* Option A text */
   --color-text-muted: #3A3A40; /* Option A muted text */
   --color-primary: #2B1B3A; /* Deeper professional purple */
+  --color-primary-dark: #24162F; /* slightly deeper for hover */
   --color-accent: #D8B25E; /* Muted gold */
   --color-secondary: #D68B5A; /* Muted orange */
   --color-whatsapp: #2E8F75; /* Muted teal-green to harmonize with palette */
@@ -178,12 +179,11 @@ html[data-theme="dark"] .portfolio .port-item,
   }
 
 /* Branded scrollbar (WebKit + Firefox) */
-/* Palette: Primary #3C2A4D, Accent #E9C46A, Secondary #F4A261, Background #F5F3F0 */
 :root {
   --scrollbar-track: transparent;
-  --scrollbar-thumb-border: rgba(245, 243, 240, 0.6); /* matches warm cream */
-  --scrollbar-thumb: linear-gradient(180deg, #3C2A4D 0%, #F4A261 100%);
-  --scrollbar-thumb-hover: linear-gradient(180deg, #3C2A4D 0%, #E9C46A 100%);
+  --scrollbar-thumb-border: rgba(245, 243, 240, 0.6);
+  --scrollbar-thumb: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  --scrollbar-thumb-hover: linear-gradient(135deg, var(--color-primary-dark), var(--color-accent));
 }
 
 /* Firefox */
@@ -194,8 +194,8 @@ html {
 
 /* WebKit */
 *::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 *::-webkit-scrollbar-track {
   background: var(--scrollbar-track);
