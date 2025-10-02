@@ -18,24 +18,34 @@
   flex-direction: column;
 }
 
-.contact-card h2 {
   color: #2B1B3A;
   margin-bottom: 10px;
 }
 
 
-.contact-card p {
-  color: #5b4d5a;
-  margin-bottom: 20px;
-}
+  .contact-card p {
+    color: #5b4d5a;
+    margin-bottom: 20px;
+  }
 
-/* Label styling */
-.contact-form label {
-  display: flex;
-  flex-direction: column;
-  font-weight: 600;
-  color: #2B1B3A;
-  font-size: 0.95rem;
+  /* WhatsApp button sizing */
+  @media (min-width: 901px) {
+    .btn.whatsapp {
+      width: auto;            /* shrink to content */
+      max-width: 240px;       /* cap width on large screens */
+      align-self: flex-start; /* avoid stretching */
+      padding: 10px 14px;     /* slightly tighter to avoid overly long look */
+      white-space: nowrap;    /* keep label on one line */
+    }
+  }
+
+  /* Label styling */
+  .contact-form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    color: #2B1B3A;
+    font-size: 0.95rem;
 }
 
 /* Inputs and textarea */
