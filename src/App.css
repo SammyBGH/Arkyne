@@ -1,0 +1,47 @@
+/* App-level styles (kept minimal to complement index.css) */
+#root {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Optional helpers */
+  .card { padding: 2rem; }
+  .read-the-docs { color: #888; }
+  
+  /* Custom scrollbar (matches frontend/src/index.css) */
+  /* WebKit browsers (Chrome, Edge, Safari) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent; /* transparent track as requested */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    /* Gradient thumb using site variables defined in index.css :root */
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    border-radius: 8px;
+    border: 2px solid rgba(245, 243, 240, 0.6); /* subtle border that blends with warm cream */
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-accent));
+  }
+  
+  /* Remove scrollbar arrows in WebKit */
+  ::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+  
+  /* Firefox */
+  html {
+    scrollbar-width: thin;
+    /* Note: the track is the second color; keep transparent to match the WebKit track */
+    scrollbar-color: var(--color-primary) transparent;
+  }
