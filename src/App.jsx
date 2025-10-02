@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import FAQ from './components/FAQ';
 import Process from './components/Process';
 import CTABand from './components/CTABand';
+import "./App.css"
 
 export default function App() {
   return (
