@@ -196,8 +196,8 @@ html[data-theme="dark"] .portfolio .port-item,
 :root {
   --scrollbar-track: transparent;
   --scrollbar-thumb-border: rgba(245, 243, 240, 0.6);
-  --scrollbar-thumb: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  --scrollbar-thumb-hover: linear-gradient(135deg, var(--color-primary-dark), var(--color-accent));
+  --scrollbar-thumb: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  --scrollbar-thumb-hover: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
 }
 
 /* Firefox */
