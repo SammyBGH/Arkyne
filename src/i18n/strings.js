@@ -101,6 +101,7 @@ export const STRINGS = {
       nl_subscribe: 'Subscribe',
       nl_error: 'Please enter a valid email.',
       nl_success: 'Thanks for subscribing!',
+      nl_already: 'You are already subscribed.',
       bottom: year => `© ${year} Arkyne — Built with care`
     }
   },
@@ -206,6 +207,7 @@ export const STRINGS = {
       nl_subscribe: 'S’abonner',
       nl_error: 'Veuillez saisir un e‑mail valide.',
       nl_success: "Merci pour l’abonnement !",
+      nl_already: "Vous êtes déjà abonné(e).",
       bottom: year => `© ${year} Arkyne — Conçu avec soin`
     }
   }

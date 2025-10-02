@@ -10,7 +10,7 @@ export default function Footer() {
 
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null); // 'success' | 'error' | null
+  const [status, setStatus] = useState(null); // 'success' | 'error' | 'already' | null
   const [fade, setFade] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -28,7 +28,12 @@ export default function Footer() {
         body: JSON.stringify({ email, source: 'footer-newsletter' }),
       });
       if (!res.ok) throw new Error('Request failed');
-      setStatus('success');
+      const data = await res.json().catch(() => ({}));
+      if (data && data.alreadySubscribed) {
+        setStatus('already');
+      } else {
+        setStatus('success');
+      }
       setEmail('');
       // Start visual fade 500ms before removal
       setFade(false);
@@ -98,6 +103,9 @@ export default function Footer() {
             </form>
             {status === 'success' && (
               <p className={`nl-success${fade ? ' fade-out' : ''}`} role="status" aria-live="polite">{t('footer.nl_success')}</p>
+            )}
+            {status === 'already' && (
+              <p className={`nl-success${fade ? ' fade-out' : ''}`} role="status" aria-live="polite">{t('footer.nl_already')}</p>
             )}
             {status === 'error' && (
               <p className="nl-error" role="status" aria-live="polite">{t('footer.nl_error')}</p>
