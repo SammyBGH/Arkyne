@@ -163,17 +163,57 @@ img, video, canvas, svg { max-width: 100%; height: auto; }
   box-shadow: var(--shadow-md);
 }
 
-/* Theming overrides for common components without touching individual files */
 html[data-theme="dark"] .about-card,
 html[data-theme="dark"] .service-card,
 html[data-theme="dark"] .test-card,
 html[data-theme="dark"] .contact-card,
 html[data-theme="dark"] .portfolio .port-item,
-html[data-theme="dark"] .modal-card {
-  background: var(--color-card);
-  box-shadow: var(--shadow-md);
+  html[data-theme="dark"] .modal-card {
+    background: var(--color-card);
+    box-shadow: var(--shadow-md);
+  }
+
+  html[data-theme="dark"] .hero-section {
+    background: linear-gradient(120deg, #141017 0%, #1a1321 40%, #2B1B3A 100%);
+  }
+
+/* Branded scrollbar (WebKit + Firefox) */
+/* Palette: Primary #3C2A4D, Accent #E9C46A, Secondary #F4A261, Background #F5F3F0 */
+:root {
+  --scrollbar-track: transparent;
+  --scrollbar-thumb-border: rgba(245, 243, 240, 0.6); /* matches warm cream */
+  --scrollbar-thumb: linear-gradient(180deg, #3C2A4D 0%, #F4A261 100%);
+  --scrollbar-thumb-hover: linear-gradient(180deg, #3C2A4D 0%, #E9C46A 100%);
 }
 
-html[data-theme="dark"] .hero-section {
-  background: linear-gradient(120deg, #141017 0%, #1a1321 40%, #2B1B3A 100%);
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #3C2A4D transparent; /* thumb, track */
+}
+
+/* WebKit */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 8px;
+  border: 2px solid var(--scrollbar-thumb-border);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Dark theme adjustments */
+html[data-theme="dark"] {
+  scrollbar-color: #E9C46A transparent;
+}
+html[data-theme="dark"] *::-webkit-scrollbar-thumb {
+  border-color: rgba(20, 16, 23, 0.6);
 }
