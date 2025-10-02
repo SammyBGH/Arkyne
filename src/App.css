@@ -1,7 +1,8 @@
 /* App-level styles (kept minimal to complement index.css) */
 #root {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0;
+    padding: 0;
   }
   
   /* Optional helpers */
