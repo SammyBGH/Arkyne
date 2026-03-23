@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import FAQ from './components/FAQ';
 import Process from './components/Process';
 import CTABand from './components/CTABand';
+import CVFloatingAd from './components/CVFloatingAd';
 import "./App.css"
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
         <Contact />
         <Footer />
       </main>
+      <CVFloatingAd />
     </>
   );
 }
